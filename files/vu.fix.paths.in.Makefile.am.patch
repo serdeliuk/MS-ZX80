@@ -1,0 +1,94 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -74,13 +74,13 @@
+ BUILT_SOURCES = options.h settings.c settings.h
+ 
+ settings.c: settings.pl settings.dat
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/settings.pl $(srcdir)/settings.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/settings.pl $(srcdir)/settings.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ settings.h: settings-header.pl settings.dat
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/settings-header.pl $(srcdir)/settings.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/settings-header.pl $(srcdir)/settings.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ options.h: $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/@OPTIONS_DIR@/options-header.pl $(srcdir)/ui/options.dat $(srcdir)/perl/Fuse.pm $(srcdir)/perl/Fuse/Dialog.pm
+-	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/options.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/ui/@OPTIONS_DIR@/options-header.pl - public > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/options.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/ui/@OPTIONS_DIR@/options-header.pl - public > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ AM_CPPFLAGS = \
+               $(GLIB_CFLAGS) \
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/ui/sdl/Makefile.am
++++ a/ui/sdl/Makefile.am
+@@ -51,4 +51,4 @@
+ 
+ ui/sdl/keysyms.c: $(srcdir)/keysyms.pl $(srcdir)/keysyms.dat
+ 	@$(MKDIR_P) ui/sdl
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/keysyms.pl sdl $(srcdir)/keysyms.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/keysyms.pl sdl $(srcdir)/keysyms.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/ui/widget/Makefile.am
++++ b/ui/widget/Makefile.am
+@@ -68,16 +68,16 @@
+ 
+ ui/widget/menu_data.c: $(srcdir)/perl/cpp-perl.pl $(srcdir)/menu_data.dat $(srcdir)/menu_data.pl config.h
+ 	@$(MKDIR_P) ui/widget
+-	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/menu_data.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/menu_data.pl widget > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/menu_data.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/menu_data.pl widget > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ ui/widget/options.c: $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/widget/options.pl $(srcdir)/ui/options.dat $(srcdir)/perl/Fuse.pm $(srcdir)/perl/Fuse/Dialog.pm
+ 	@$(MKDIR_P) ui/widget
+-	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/options.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/ui/widget/options.pl - > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/options.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/ui/widget/options.pl - > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ ui/widget/options_internals.h: $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/widget/options-header.pl $(srcdir)/ui/options.dat $(srcdir)/perl/Fuse.pm $(srcdir)/perl/Fuse/Dialog.pm
+ 	@$(MKDIR_P) ui/widget
+-	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/options.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/ui/widget/options-header.pl - > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) $(srcdir)/perl/cpp-perl.pl config.h $(srcdir)/ui/options.dat | $(PERL) -I$(srcdir)/perl $(srcdir)/ui/widget/options-header.pl - > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ ui/widget/fuse.font: $(srcdir)/ui/widget/mkfusefont.pl $(srcdir)/ui/widget/fuse.font.sbf
+ 	@$(MKDIR_P) ui/widget
+-	$(AM_V_GEN)$(PERL) $(srcdir)/ui/widget/mkfusefont.pl $(srcdir)/ui/widget/fuse.font.sbf > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) $(srcdir)/ui/widget/mkfusefont.pl $(srcdir)/ui/widget/fuse.font.sbf > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/z80/Makefile.am
++++ b/z80/Makefile.am
+@@ -34,23 +34,23 @@
+ 
+ z80/opcodes_base.c: $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_base.dat
+ 	@$(MKDIR_P) z80
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_base.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_base.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ z80/z80_cb.c: $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_cb.dat
+ 	@$(MKDIR_P) z80
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_cb.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_cb.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ z80/z80_ddfd.c: $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ddfd.dat
+ 	@$(MKDIR_P) z80
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ddfd.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ddfd.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ z80/z80_ddfdcb.c: $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ddfd.dat
+ 	@$(MKDIR_P) z80
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ddfdcb.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ddfdcb.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ z80/z80_ed.c: $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ed.dat
+ 	@$(MKDIR_P) z80
+-	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ed.dat > $@.tmp && mv $@.tmp $@
++	$(AM_V_GEN)$(PERL) -I$(srcdir)/perl $(srcdir)/z80/z80.pl $(srcdir)/z80/opcodes_ed.dat > $(srcdir)/$@.tmp && mv $(srcdir)/$@.tmp $(srcdir)/$@
+ 
+ noinst_HEADERS += \
+                   z80/z80.h \

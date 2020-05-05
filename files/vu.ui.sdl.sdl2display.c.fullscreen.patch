@@ -1,0 +1,15 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/ui/sdl/sdl2display.c
++++ b/ui/sdl/sdl2display.c
+@@ -281,7 +281,8 @@
+   } else {
+     x = y = SDL_WINDOWPOS_UNDEFINED;
+   }
+-  sdlwin = SDL_CreateWindow( "Fuse", x, y, w, h, SDL_WINDOW_RESIZABLE);
++//  sdlwin = SDL_CreateWindow( "Fuse", x, y, w, h, SDL_WINDOW_RESIZABLE);
++  sdlwin = SDL_CreateWindow( "Fuse", x, y, w, h, SDL_WINDOW_FULLSCREEN);
+   if( !sdlwin ) {
+     fprintf( stderr, "%s: couldn't create SDL2 window\n", fuse_progname );
+     fuse_abort();

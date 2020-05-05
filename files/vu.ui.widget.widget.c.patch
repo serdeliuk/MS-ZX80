@@ -1,0 +1,15 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/ui/widget/widget.c
++++ b/ui/widget/widget.c
+@@ -824,7 +824,8 @@
+     menu_machine_select( 0 );
+     fuse_emulation_unpause();
+     break;
+-  case INPUT_KEY_F10:
++//  case INPUT_KEY_F10:
++  case INPUT_KEY_Escape:
+     fuse_emulation_pause();
+     menu_file_exit( 0 );
+     fuse_emulation_unpause();

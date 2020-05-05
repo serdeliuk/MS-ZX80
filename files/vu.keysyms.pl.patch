@@ -1,0 +1,74 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/keysyms.pl
++++ b/keysyms.pl
+@@ -61,9 +61,66 @@
+     }
+     $keysym =~ s/(.*)_L$/L$1/;
+     $keysym =~ s/(.*)_R$/R$1/;
+-    
++
++    #    print "Before: ".$keysym."   ";
++
+     # All the magic #defines start with `SDLK_'
+-    $keysym = "SDLK_$keysym";
++    # Remap remote control keys on vusolo4k,
++    # you need to have SDL2 patched as well in order to have the remote control work, see OpenPLi libsdl2 patches.
++    # by Marc Serdeliuc Jan 2020
++
++
++    if ($keysym eq "F1") {
++        $keysym = "SDLK_HELP";
++    }
++    elsif ($keysym eq "F11") {
++        $keysym = "SDLK_TV";
++    }
++    elsif ($keysym eq "ESCAPE") {
++        $keysym = "SDLK_EXIT";
++    }
++    elsif ($keysym eq "RETURN") {
++        $keysym = "SDLK_OK";
++    }
++    elsif ($keysym eq "F5") {
++        $keysym = "SDLK_RADIO";
++    }
++    elsif ($keysym eq "TAB") {
++        $keysym = "SDLK_VOLUMEUP";
++    }
++    elsif ($keysym eq "BACKSPACE") {
++        $keysym = "SDLK_PREVIOUS";
++    }
++
++    elsif ($keysym eq "SPACE") {        # RIGHT
++        $keysym = "SDLK_CHANNELDOWN";
++    }
++    elsif ($keysym eq "RCTRL") {
++        $keysym = "SDLK_VOLUMEDOWN";    # LEFT
++    }
++    elsif ($keysym eq "RSHIFT") {
++        $keysym = "SDLK_INFO";          # JUMP/UP
++    }
++
++    elsif ($keysym eq "o") {
++        $keysym = "SDLK_GREEN"; # LEFT
++    }
++    elsif ($keysym eq "p") {
++        $keysym = "SDLK_YELLOW"; # RIGHT
++    }
++    elsif ($keysym eq "q") {
++        $keysym = "SDLK_RED"; # UP
++    }
++    elsif ($keysym eq "a") {
++        $keysym = "SDLK_BLUE"; # DOWN
++    }
++
++
++    else {
++	$keysym = "SDLK_$keysym";
++    }
++
++#    print "After: ".$keysym."   ";
+ 
+     return $keysym;
+ }

@@ -1,0 +1,17 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/configure.ac	2020-04-21 02:43:10.894138944 +0200
++++ b/configure.ac	2020-04-21 02:55:23.215333238 +0200
+@@ -116,9 +116,9 @@
+ dnl Allow the user to say that various libraries are in one place
+ AC_ARG_WITH(local-prefix,
+ [  --with-local-prefix=PFX local libraries installed in PFX (optional)],
+-CPPFLAGS="$CPPFLAGS -I$withval/include"; LDFLAGS="$LDFLAGS -L$withval/lib",
++CPPFLAGS="$CPPFLAGS"; LDFLAGS="$LDFLAGS",
+ if test "$prefix" != "NONE"; then
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include"; LDFLAGS="$LDFLAGS -L$prefix/lib"
++  CPPFLAGS="$CPPFLAGS"; LDFLAGS="$LDFLAGS"
+ fi)
+ 
+ dnl Check whether to use zlib (the UNIX version is called z, Win32 zdll)

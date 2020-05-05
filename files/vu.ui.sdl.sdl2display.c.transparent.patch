@@ -1,0 +1,33 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/ui/sdl/sdl2display.c
++++ b/ui/sdl/sdl2display.c
+@@ -272,6 +272,7 @@
+ sdldisplay_recreate_win_ren( int w, int h )
+ {
+   int x, y;
++
+   if( sdlwin ) {
+     SDL_GetWindowPosition( sdlwin, &x, &y );
+     SDL_DestroyRenderer( sdlren );
+@@ -281,6 +282,9 @@
+   } else {
+     x = y = SDL_WINDOWPOS_UNDEFINED;
+   }
++    x = y = 30;
++    w = 640;
++    h = 480;
+   sdlwin = SDL_CreateWindow( "Fuse", x, y, w, h, SDL_WINDOW_RESIZABLE);
+   if( !sdlwin ) {
+     fprintf( stderr, "%s: couldn't create SDL2 window\n", fuse_progname );
+@@ -291,6 +295,9 @@
+     fprintf( stderr, "%s: couldn't create SDL2 renderer\n", fuse_progname );
+     fuse_abort();
+   }
++
++    SDL_SetWindowOpacity( sdlwin, 0.7f);
++
+ #ifdef USE_WM_ASPECT_X11
+   wm_setsizehints();
+ #endif

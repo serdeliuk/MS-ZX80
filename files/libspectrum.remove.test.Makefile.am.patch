@@ -1,0 +1,10 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/Makefile.am	2020-04-21 02:43:10.894138944 +0200
++++ b/Makefile.am	2020-04-21 03:57:09.230360252 +0200
+@@ -145,4 +145,3 @@
+ 
+ include doc/Makefile.am
+ include myglib/Makefile.am
+-include test/Makefile.am

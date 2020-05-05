@@ -1,0 +1,28 @@
+By Marc Serdeliuc
+https://github.com/serdeliuk
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -113,9 +113,9 @@
+ dnl Allow the user to say that various libraries are in one place
+ AC_ARG_WITH(local-prefix,
+ [  --with-local-prefix=PFX local libraries installed in PFX (optional)],
+-CPPFLAGS="$CPPFLAGS -I$withval/include"; LDFLAGS="$LDFLAGS -L$withval/lib",
++CPPFLAGS="$CPPFLAGS"; LDFLAGS="$LDFLAGS",
+ if test "$prefix" != "NONE"; then
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include"; LDFLAGS="$LDFLAGS -L$prefix/lib"
++  CPPFLAGS="$CPPFLAGS"; LDFLAGS="$LDFLAGS"
+ fi)
+ 
+ dnl Check that libspectrum is available and that it is new enough
+@@ -612,7 +612,9 @@
+ dnl
+ 
+ AC_MSG_CHECKING(which sound routines to use)
+-if test "$UI" = sdl; then
++# disable SDL audio and force alsa :)
++# if test "$UI" = sdl; then
++if test "$UI" = sdl_2_alsa; then
+   SOUND_LIBADD='sound/sdlsound.$(OBJEXT)' SOUND_LIBS='' sound_fifo=yes
+   audio_driver="SDL"
+ elif test "$dxsound_available" = yes; then
