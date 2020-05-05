@@ -1,6 +1,4 @@
-
-# MS-ZX80 [![download](https://img.shields.io/github/v/release/serdeliuk/MS-ZX80?style=plastic)](https://github.com/serdeliuk/MS-ZX80/releases/download/1/mszx80.zip)
-
+# MS-ZX80 [![download](https://img.shields.io/github/downloads/serdeliuk/MS-ZX80/total)](https://github.com/serdeliuk/MS-ZX80/releases/download/1/mszx80-ipk-packages.tar.gz)
 
 ### Fuse Emulator 1.5.7 SDL2 ported to Vu+ Solo4K
 
