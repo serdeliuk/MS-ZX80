@@ -1,6 +1,6 @@
 # MS-ZX80 [![download](https://img.shields.io/github/downloads/serdeliuk/MS-ZX80/total)](https://github.com/serdeliuk/MS-ZX80/releases/download/1/mszx80-ipk-packages.zip)
 
-### Fuse Emulator 1.5.7 SDL2 ported to Vu+ Solo4K
+### Fuse Sinclair Spectrum Emulator 1.5.7 SDL2 ported to Vu+ Solo4K
 
 
 #### This source code is licensed under [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html#preamble)
