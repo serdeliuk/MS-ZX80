@@ -1,5 +1,8 @@
 # MS-ZX80 [![download](https://img.shields.io/github/downloads/serdeliuk/MS-ZX80/total)](https://github.com/serdeliuk/MS-ZX80/releases/download/1/mszx80-ipk-packages.zip)
 
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/serdeliuk) any donation is highly appreciated!
+
 ### Fuse Sinclair Spectrum Emulator 1.5.7 SDL2 ported to Vu+ Solo4K
 
 
@@ -37,6 +40,3 @@
 
 
 Enjoy!!!<br>
-
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/serdeliuk) any donation is highly appreciated!
